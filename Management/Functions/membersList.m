@@ -4,7 +4,7 @@ let
 //Get a list of models for a given projectId
 GetMembers = (projectId as text) as list =>
 let 
-	members = RESTWPages("/v2/projects/" & projectId & "/members",token,1),
+	members = RESTWPages("/v2/projects/" & projectId & "/members",token),
 	membersWithProjectId = List.Transform(members, each Record.AddField(_,"projectId",projectId))
 in
 	membersWithProjectId,

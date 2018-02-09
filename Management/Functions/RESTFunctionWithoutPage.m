@@ -1,5 +1,5 @@
 let
-Source = (relativePath as text, token as text) => let
+Source = (relativePath as text, revisionId as text, token as text) => let
 	
 		url = "https://api.bimsync.com",
 
@@ -14,7 +14,7 @@ Source = (relativePath as text, token as text) => let
 				],
 				Query = 
 				[
-					pageSize=Number.ToText(1000)
+					revision = revisionId
 				],
 				RelativePath = relativePath,
 				ManualStatusHandling={500}
