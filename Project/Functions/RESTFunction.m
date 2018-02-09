@@ -33,7 +33,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 	//Get the page number for a given ressource
 	GetItemCount = () as number =>
 	let
-		url = "https://bimsyncmanagerapi.azurewebsites.net/api/users/pages",
+		url = "https://bimsyncmanagerapi.azurewebsites.net",
 
 		GetJson = Web.Contents
 		(
@@ -43,8 +43,9 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 				[
 					ressource=relativePath,
 					revision=revisionId,
-                                        PBCode=PowerBISecret
-				]
+                    PBCode=PowerBISecret
+				],
+				RelativePath = "/api/users/pages"
 			]
 		),
 
@@ -55,7 +56,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 
 	//Get Page count
 	ItemCount = GetItemCount(),
-	PageCount = Number.Round(ItemCount/1000, 0, 0),
+	PageCount = Number.RoundUp(ItemCount/1000),
 	PageIndices = { 0 .. PageCount},
 	
 	Entities = if ItemCount > 0
