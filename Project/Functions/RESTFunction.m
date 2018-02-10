@@ -25,8 +25,9 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 			]
 		),
 
-		GetText = Text.Replace (Text.FromBinary(GetJson), """ifcType"":""IfcPropertySingleValue"",""ifcType"":""IfcPropertySingleValue"",","""ifcType"":""IfcPropertySingleValue""," ),
-		Source = Json.Document(GetText )
+		GetText1 = Text.Replace (Text.FromBinary(GetJson), """ifcType"":""IfcPropertySingleValue"",""ifcType"":""IfcPropertySingleValue"",","""ifcType"":""IfcPropertySingleValue""," ),
+		GetText2 = Text.Replace (GetText1, """ifcType"":""IfcPropertyEnumeratedValue"",""ifcType"":""IfcPropertyEnumeratedValue"",","""ifcType"":""IfcPropertyEnumeratedValue""," ),
+		Source = Json.Document(GetText2 )
 	in  
 		Source,
 		
