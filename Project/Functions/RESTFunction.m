@@ -1,6 +1,5 @@
 let
 Source = (relativePath as text, revisionId as text, token as text) => let
-	
 	//A single call to the bimsync API
 	GetPage = (Index) =>
 	let
@@ -58,7 +57,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 	//Get Page count
 	ItemCount = GetItemCount(),
 	PageCount = Number.RoundUp(ItemCount/1000),
-	PageIndices = { 0 .. PageCount},
+	PageIndices = { 1 .. PageCount},
 	
 	Entities = if ItemCount > 0
 	then
