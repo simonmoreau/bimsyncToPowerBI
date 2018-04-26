@@ -6,6 +6,7 @@ let
         (state, current) => Table.AddColumn(state, current, each Record.FieldOrDefault([Column1],current)))
 in
           properties,
+
 //Check if a revision is one of the two last one for its model
 FilterRevision = (revision as record,revisions as list ) as logical => 
 let
@@ -35,11 +36,19 @@ let
 	removefields = List.Transform(AdduserId , each Record.RemoveFields(_,{"model","user"}))
 in
     removefields,
+
+//Get a list of elements for a given revision and add the revisionId
+GetElementsOfARevision = (revision as record, projectId as text, token as text) as list => 
+let
+	Source = RESTFunction("/v2/projects/" & projectId & "/ifc/products/relations", revision[id],token),
+	SourceWithId = List.Transform(Source, each Record.AddField (_, "revisionId", revision[id] ))
+in
+    SourceWithId,
 	
 //The request to retrieve a page of relationshiop
 token = GetToken(),
 revisionsList = LastRevisions(AllRevisions(projectId ,token )),
-Entities    = List.Combine(List.Transform(revisionsList, each RESTFunction("/v2/projects/" & projectId & "/ifc/products/relations", _[id],token))),
+Entities    = List.Combine(List.Transform(revisionsList, each GetElementsOfARevision(_,projectId,token))),
 Table       = Table.FromList(Entities, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
 Fields      = Record.FieldNames(Entities{0}),
 FinalTable  = AddFields(Table,Fields),
