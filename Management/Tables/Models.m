@@ -1,7 +1,7 @@
 let
 
-//Get a list of models for a given projectId
-GetModels = (projectId as text, token as text) as list =>
+	//Get a list of models for a given projectId
+	GetModels = (projectId as text, token as text) as list =>
 let 
 	models = RESTWPages("/v2/projects/" & projectId & "/models",token),
 	modelsWithProjectId = List.Transform(models, each Record.AddField(_,"projectId",projectId))
