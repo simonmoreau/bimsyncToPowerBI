@@ -24,9 +24,10 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 			]
 		),
 
-		GetText1 = Text.Replace (Text.FromBinary(GetJson), """ifcType"":""IfcPropertySingleValue"",""ifcType"":""IfcPropertySingleValue"",","""ifcType"":""IfcPropertySingleValue""," ),
-		GetText2 = Text.Replace (GetText1, """ifcType"": ""IfcPropertySingleValue"",""ifcType"": ""IfcPropertySingleValue"",","""ifcType"":""IfcPropertySingleValue""," ),
-		GetText3 = Text.Replace (GetText2, """ifcType"":""IfcPropertyEnumeratedValue"",""ifcType"":""IfcPropertyEnumeratedValue"",","""ifcType"":""IfcPropertyEnumeratedValue""," ),
+		JsonText = Text.FromBinary(GetJson),
+		GetText1 = Text.Replace (Text.Replace (Text.Replace (JsonText," : " ,":")," :",":"),": ",":"),
+		GetText2 = Text.Replace (GetText1, """ifcType"":""IfcPropertySingleValue"",""ifcType"":""IfcPropertySingleValue""","""ifcType"":""IfcPropertySingleValue""" ),
+		GetText3 = Text.Replace (GetText2, """ifcType"":""IfcPropertyEnumeratedValue"",""ifcType"":""IfcPropertyEnumeratedValue""","""ifcType"":""IfcPropertyEnumeratedValue""" ),
 		Source = Json.Document(GetText3 )
 	in  
 		Source,
