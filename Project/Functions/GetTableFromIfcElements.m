@@ -4,7 +4,7 @@ let
 //A function to get an value from an arbitrary path of 6 fields
 GetValue = (baseRecord as record, field1 as text, field2 as text, field3 as text, field4 as text, field5 as text, field6 as text) as any => 
 let
-    value =
+    value = try
 		Record.FieldOrDefault(
 			Record.FieldOrDefault(
 				Record.FieldOrDefault
@@ -24,6 +24,8 @@ let
 			),
 		field6	
 		)
+        otherwise
+        null
 in
     value,
 
