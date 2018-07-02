@@ -1,0 +1,233 @@
+{
+	"variables": [],
+	"info": {
+		"name": "bimsync BCF",
+		"_postman_id": "e3d5b09d-06cf-0213-ee3b-fabe65d30c69",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/auth",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Version",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/version",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Current User",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/current-user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Projects",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create Issue Board in Project",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/1.0/projects",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"NewIssueBoard\",\r\n    \"bimsync_project_id\": \"e43d8c79d1c6409eb3dd871170b4d6b0\"\r\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get issue board extension statuses",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/extensions/statuses",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Update issue board extension status",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/extensions/statuses",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"existingName\": \"Closed\",\r\n    \"name\": \"Fermé\"\r\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get issue board extension types",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/extensions/types",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Update issue board extension type",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/extensions/types",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"existingName\": \"Error\",\r\n    \"name\": \"Erreur\"\r\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get documents",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/documents",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Upload document",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/documents",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Create issue board extension status",
+			"request": {
+				"url": "https://bcf.bimsync.com/bcf/beta/projects/720e7e01-f184-430c-8516-2a3d1e7da7a5/extensions/statuses",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer jQg3g5knpDCjair"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"En cours\",\r\n    \"color\": \"#E69138\",\r\n    \"type\": \"candidate\"\r\n}"
+				},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}

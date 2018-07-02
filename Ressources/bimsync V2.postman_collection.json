@@ -1,0 +1,1381 @@
+{
+	"variables": [],
+	"info": {
+		"name": "bimsync V2",
+		"_postman_id": "aa1bd6c9-0b2a-77fc-3a15-b6f951fa8190",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "projects",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create project",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Bouygues Immobilier new project\",\r\n  \"description\": \"This is a new Bouygues Immobilier project\"\r\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "access_token",
+			"request": {
+				"url": "https://api.bimsync.com/oauth2/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "hl94XJLXaQe3ogX",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "ZbwjiwgwWHAwcBj",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "4bKxOXIVY5",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://127.0.0.1:51335/",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LIST THE LIBARIES",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/42fef6fd1d4a412a9e53712af9f61665/libraries",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "LIST LIBRARY ITEMS",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/42fef6fd1d4a412a9e53712af9f61665/libraries/7a41daf9f3c946748d381ccbddc87f7c/items",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET LIBRARY ASSOCIATIONS (to objects)",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/42fef6fd1d4a412a9e53712af9f61665/libraries/12a91a0ef6de4c17a040cf7fc223055f/items/0839ffde29974b53bbeacdf12d81c4ef/associations ",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET ONE LIBRARY ITEM",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/42fef6fd1d4a412a9e53712af9f61665/libraries/12a91a0ef6de4c17a040cf7fc223055f/items/ea82907fc9f44515b61c97488588b616",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get products",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/134c9142631f4b9c8cb905653f54e44b/ifc/products?ifcType=IfcSpace&revision=6d4f0c182ba343ee958ef0320eab47d6&page=1&pageSize=253",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"134c9142631f4b9c8cb905653f54e44b",
+						"ifc",
+						"products"
+					],
+					"query": [
+						{
+							"key": "ifcType",
+							"value": "IfcSpace",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "revision",
+							"value": "6d4f0c182ba343ee958ef0320eab47d6",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pageSize",
+							"value": "253",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get product",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/134c9142631f4b9c8cb905653f54e44b/ifc/products/28243583172?revision=111787cf86214bfb80e604066e1320fb&page=1&pageSize=1000",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"134c9142631f4b9c8cb905653f54e44b",
+						"ifc",
+						"products",
+						"28243583172"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "111787cf86214bfb80e604066e1320fb",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pageSize",
+							"value": "1000",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get products type summary",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/9c5560d963a44ebfb3e145709cba132d/ifc/products/ifctypes?revision=d0939608fa7042c28746f914e951343a&page=1&pageSize=1000",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"9c5560d963a44ebfb3e145709cba132d",
+						"ifc",
+						"products",
+						"ifctypes"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "d0939608fa7042c28746f914e951343a",
+							"equals": true
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true
+						},
+						{
+							"key": "pageSize",
+							"value": "1000",
+							"equals": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Query products",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/products?revision=6fba8467a8af4530a27ab4cc513dab38",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"products"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "6fba8467a8af4530a27ab4cc513dab38",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"ifcType\": {\r\n            \"$ifcType\": \"IfcSpace\"\r\n        }\r\n    },\r\n    \"fields\": {\r\n        \"ifcType\": 1,\r\n        \"attributes.Name\": 1,\r\n        \"attributes.GlobalId\": 1,\r\n        \"quantitySets\":1\r\n    }\r\n}"
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \n    --header \\\"Authorization: Bearer $ACCESS_TOKEN\\\" \n    --header \\\"Content-Type: application/json\\\" \n    --data \n        \\\"{ \\\"query\\\": {\n               \\\"ifcType\\\": {\n                 \\\"$ifcType\\\": \\\"IfcWall\\\"\n               }\n           },\n           \\\"fields\\\": {\n               \\\"attributes.Name\\\": 1,\n               \\\"attributes.GlobalId\\\": 1\n           }\n        }\\\" \n    \\\"https://api.bimsync.com/v2/projects/af2d8af0fa54465b89bf26dd3d92cfd0/ifc/products\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Query multiples products",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/9c5560d963a44ebfb3e145709cba132d/ifc/products?revision=d0939608fa7042c28746f914e951343a&page=1&pageSize=1000",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"9c5560d963a44ebfb3e145709cba132d",
+						"ifc",
+						"products"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "d0939608fa7042c28746f914e951343a",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "1",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pageSize",
+							"value": "1000",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"query\": {\r\n        \"ifcType\": \r\n        { \"$in\":[\r\n            \"IfcProject\",\"IfcSite\",\"IfcBuilding\",\"IfcRoof\",\"IfcGrid\",\"IfcBuildingStorey\",\"IfcColumn\",\"IfcStair\",\"IfcCurtainWall\",\"IfcRailing\",\"IfcBuildingElementProxy\",\"IfcWall\",\"IfcSlab\",\"IfcWindow\"\r\n        ]}\r\n    },\r\n    \"fields\": {\r\n        \"ifcType\": 1,\r\n        \"attributes\": 1,\r\n        \"quantitySets\":1,\r\n        \"propertySets\":1,\r\n        \"materials\":1\r\n    }\r\n}"
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \n    --header \\\"Authorization: Bearer $ACCESS_TOKEN\\\" \n    --header \\\"Content-Type: application/json\\\" \n    --data \n        \\\"{ \\\"query\\\": {\n               \\\"ifcType\\\": {\n                 \\\"$ifcType\\\": \\\"IfcWall\\\"\n               }\n           },\n           \\\"fields\\\": {\n               \\\"attributes.Name\\\": 1,\n               \\\"attributes.GlobalId\\\": 1\n           }\n        }\\\" \n    \\\"https://api.bimsync.com/v2/projects/af2d8af0fa54465b89bf26dd3d92cfd0/ifc/products\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Query types",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/types?revision=6fba8467a8af4530a27ab4cc513dab38",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"types"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "6fba8467a8af4530a27ab4cc513dab38",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"query\":\r\n{\r\n  \"ifcType\": {\"$ifcType\": \"IfcWallType\"}\r\n}\r\n}"
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \n    --header \\\"Authorization: Bearer $ACCESS_TOKEN\\\" \n    --header \\\"Content-Type: application/json\\\" \n    --data \n        \\\"{ \\\"query\\\": {\n               \\\"ifcType\\\": {\n                 \\\"$ifcType\\\": \\\"IfcWall\\\"\n               }\n           },\n           \\\"fields\\\": {\n               \\\"attributes.Name\\\": 1,\n               \\\"attributes.GlobalId\\\": 1\n           }\n        }\\\" \n    \\\"https://api.bimsync.com/v2/projects/af2d8af0fa54465b89bf26dd3d92cfd0/ifc/products\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh token",
+			"request": {
+				"url": "https://api.bimsync.com/oauth2/token",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "refresh_token",
+							"value": "rOAOteqMvWLo87f8YJwszy",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "6E63g0C2zVOwlNm",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "gGYTHliWio6LBzZ",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Generated from a curl request: \ncurl -X POST -H 'Authorization: Basic dGVzdGNsaWVudDpzZWNyZXQ=' -d 'refresh_token=fdb8fdbecf1d03ce5e6125c067733c0d51de209c&grant_type=refresh_token' localhost:3000/oauth/token"
+			},
+			"response": []
+		},
+		{
+			"name": "Update organization member",
+			"request": {
+				"url": "https://api.bimsync.com/v2/orgs/524809076a694255b989d236517a55da/members",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"user\": \"bcd7bcbc8b4144de855b66280845640b\",\n           \"role\": \"member\" }"
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \\\n    --header \\\"Authorization: Bearer $ACCESS_TOKEN\\\" \\\n    --header \\\"Content-Type: application/json\\\" \\\n    --data \\\n        \\\"{ \\\\\"user\\\\\": \\\\\"bcd7bcbc8b4144de855b66280845640b\\\\\" \\\n           \\\\\"role\\\\\": \\\\\"member\\\\\" }\\\" \\\n    \\\"https://api.bimsync.com/v2/orgs/524809076a694255b989d236517a55da/members\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Create revision",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/revisions",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/ifc",
+						"description": ""
+					},
+					{
+						"key": "Bimsync-Params",
+						"value": "{\"callbackUrl\": \"http://127.0.0.1:51335/\",\"comment\": \"Add windows\",\"filename\": \"Duplex_A_20110907.ifc\",\"model\": \"d1a34f1b291a4f4badc09a5bb46ce9bb\"}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \n    --header \\\"Authorization: Bearer $ACCESS_TOKEN\\\" \n    --header \\\"Content-Type: application/ifc\\\" \n    --header \\\"Bimsync-Params: { 'callbackUrl': 'https://example.com','comment': 'Add windows','filename': 'ARCH.ifc','model': '67024671cbd642a9b7c84808b4d509f5' } \\\" \n    --data-binary ARCH.ifc \n    \\\"https://api.bimsync.com/v2/projects/af2d8af0fa54465b89bf26dd3d92cfd0/revisions\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"url": "https://api.bimsync.com/oauth2/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "refresh_token",
+							"value": "ngntkUT1phNCfMQtOLdMZF",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "grant_type",
+							"value": "refresh_token",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_id",
+							"value": "hl94XJLXaQe3ogX",
+							"type": "text",
+							"description": ""
+						},
+						{
+							"key": "client_secret",
+							"value": "ZbwjiwgwWHAwcBj",
+							"type": "text",
+							"description": ""
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Query Storey",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/9c5560d963a44ebfb3e145709cba132d/ifc/products?ifcType=IfcSpace&revision=bf12737844b7492283ca9365969f220f",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"9c5560d963a44ebfb3e145709cba132d",
+						"ifc",
+						"products"
+					],
+					"query": [
+						{
+							"key": "ifcType",
+							"value": "IfcSpace",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "revision",
+							"value": "bf12737844b7492283ca9365969f220f",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "models",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/1bcc20c6e026432d9801df5968952cc6/models",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get revisions",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/9c5560d963a44ebfb3e145709cba132d/revisions?pageSize=1000",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"9c5560d963a44ebfb3e145709cba132d",
+						"revisions"
+					],
+					"query": [
+						{
+							"key": "pageSize",
+							"value": "1000"
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "users",
+			"request": {
+				"url": "https://api.bimsync.com/v2/users",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get members",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/f5780dd78f304030a493ba6fafd237c6/members",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get organizations",
+			"request": {
+				"url": "https://api.bimsync.com/v2/orgs",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get relations",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/42fef6fd1d4a412a9e53712af9f61665/ifc/products/relations?revision=5f1ea37cebd74f2bafca3a55c182934c&ifcType=ifcZone",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"42fef6fd1d4a412a9e53712af9f61665",
+						"ifc",
+						"products",
+						"relations"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "5f1ea37cebd74f2bafca3a55c182934c",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "pageSize",
+							"value": "1",
+							"equals": true,
+							"disabled": true
+						},
+						{
+							"key": "ifcType",
+							"value": "ifcZone",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Owner history",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/1bcc20c6e026432d9801df5968952cc6/ifc/ownerhistory?revision=ce663abca7ff4fb8b632d24aeb3b3030",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"1bcc20c6e026432d9801df5968952cc6",
+						"ifc",
+						"ownerhistory"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "ce663abca7ff4fb8b632d24aeb3b3030",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Layers",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/layers?revision=6fba8467a8af4530a27ab4cc513dab38",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"layers"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "6fba8467a8af4530a27ab4cc513dab38",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Groups",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/groups?revision=0247558c10f540229558d58de9f29f18",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"groups"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "0247558c10f540229558d58de9f29f18",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "page",
+							"value": "0",
+							"equals": true,
+							"disabled": true
+						},
+						{
+							"key": "pageSize",
+							"value": "1000",
+							"equals": true,
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Types",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/types?revision=b0eb7f0498bd43d68fa0b2376ac89ef6",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"types"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "b0eb7f0498bd43d68fa0b2376ac89ef6",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token function",
+			"request": {
+				"url": {
+					"raw": "https://binsyncfunction.azurewebsites.net/api/bimsyncRefresh?refresh=yes",
+					"protocol": "https",
+					"host": [
+						"binsyncfunction",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"bimsyncRefresh"
+					],
+					"query": [
+						{
+							"key": "refresh",
+							"value": "yes",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Items Number",
+			"request": {
+				"url": {
+					"raw": "https://binsyncfunction.azurewebsites.net/api/bimsyncPageNumber?ressource=projects/42fef6fd1d4a412a9e53712af9f61665/ifc/products/relations",
+					"protocol": "https",
+					"host": [
+						"binsyncfunction",
+						"azurewebsites",
+						"net"
+					],
+					"path": [
+						"api",
+						"bimsyncPageNumber"
+					],
+					"query": [
+						{
+							"key": "ressource",
+							"value": "projects/42fef6fd1d4a412a9e53712af9f61665/ifc/products/relations",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "revision",
+							"value": "5fd77b8d973b4b9a84dab37c248a7f23",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get products type summary",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/:project/ifc/products/ifctypes",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						":project",
+						"ifc",
+						"products",
+						"ifctypes"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "13577b004a1f45d5b9c46ddad91a0c2e",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "project",
+							"value": "e43d8c79d1c6409eb3dd871170b4d6b0"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Add member",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/75eed5584f164d149173cfe0512d2d77/members",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"user\": \"c03c7b9669b742bf9a0ec18f0b70ed9b\",\r\n  \"role\": \"member\"\r\n}"
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Obtain an access token",
+			"request": {
+				"url": "https://api.bimsync.com/oauth2/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "text"
+						},
+						{
+							"key": "code",
+							"value": "I6MEOBKZyL",
+							"type": "text"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "http://localhost:4200/callback",
+							"type": "text"
+						},
+						{
+							"key": "client_id",
+							"value": "6E63g0C2zVOwlNm",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "gGYTHliWio6LBzZ",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Generated from a curl request: \ncurl -X POST \\\n    --header \\\"Content-Type: application/x-www-form-urlencoded\\\" \\\n    --data \\\"grant_type=authorization_code&code=dlZE0KFxhM&redirect_uri=http%3A%2F%2Fclient%2eexample%2Ecom&client_id=$CLIENT_ID&client_secret=$CLIENT_SECRET\\\"\n    \\\"https://api.bimsync.com/oauth2/token\\\""
+			},
+			"response": []
+		},
+		{
+			"name": "Owner History",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/e43d8c79d1c6409eb3dd871170b4d6b0/ifc/ownerhistory",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"e43d8c79d1c6409eb3dd871170b4d6b0",
+						"ifc",
+						"ownerhistory"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "b0eb7f0498bd43d68fa0b2376ac89ef6",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get products type summary",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/9c5560d963a44ebfb3e145709cba132d/ifc/products/ifctypes",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Get Viewer2D token",
+			"request": {
+				"url": {
+					"raw": "https://api.bimsync.com/v2/projects/88e5a145f96c421b9cd51fbca86d60ae/viewer2d/token",
+					"protocol": "https",
+					"host": [
+						"api",
+						"bimsync",
+						"com"
+					],
+					"path": [
+						"v2",
+						"projects",
+						"88e5a145f96c421b9cd51fbca86d60ae",
+						"viewer2d",
+						"token"
+					],
+					"query": [
+						{
+							"key": "revision",
+							"value": "bf12737844b7492283ca9365969f220f",
+							"equals": true,
+							"description": "",
+							"disabled": true
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "Download Model",
+			"request": {
+				"url": "https://api.bimsync.com/v2/projects/e15cc38054cf43af9da948af976add14/revisions/1176b92c99d740ad8cc3ebd3015c02eb",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/ifc",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "List organization members",
+			"request": {
+				"url": "https://api.bimsync.com/v2/orgs/fd78e5ee080b4063b40e492041c4a9a9/members",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{Token}}"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": []
+		}
+	]
+}
