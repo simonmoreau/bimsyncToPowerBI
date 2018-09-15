@@ -12,7 +12,7 @@ FilterRevision = (revision as record,revisions as list ) as logical =>
 let
     revisionInModel = List.Select(revisions , each _[modelId] = revision[modelId]),
 	revisionInModelSorted = List.Sort(revisionInModel, (x, y) => Value.Compare(y[createdAt], x[createdAt])),
-	result = if List.Contains(List.FirstN(revisionInModelSorted,2), revision)
+	result = if List.Contains(List.FirstN(revisionInModelSorted,NumberOfRevisions), revision)
 	then
 		true
 	else
@@ -40,7 +40,7 @@ in
 //Get a list of elements for a given revision and add the revisionId
 GetElementsOfARevision = (revision as record, projectId as text, token as text) as list => 
 let
-	Source = RESTFunction("/v2/projects/" & projectId & "/ifc/products/relations", revision[id],token),
+	Source = RESTFunction("projects/" & projectId & "/ifc/products/relations", revision[id],token),
 	SourceWithId = List.Transform(Source, each Record.AddField (_, "revisionId", revision[id] ))
 in
     SourceWithId,

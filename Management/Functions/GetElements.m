@@ -25,7 +25,7 @@ in
 //Get a list of elements for a given revision and add the revisionId
 GetElementsOfARevision = (revision as record, projectId as text, IfcElement as text, token as text) as list => 
 let
-	Source = RESTFunction("/v2/projects/" & projectId & "/ifc/products?ifcType=" & IfcElement, revision[id],token)
+	Source = RESTFunction("projects/" & projectId & "/ifc/products?ifcType=" & IfcElement, revision[id],token)
 	//SourceWithId = List.Transform(Source, each Record.AddField (_, "revisionId", revision[id] ))
 in
     Source,

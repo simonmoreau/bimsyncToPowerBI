@@ -1,14 +1,13 @@
 let
     Source = () => let
-	url = "https://bimsyncmanagerapi.azurewebsites.net",
+	url = "https://binsyncfunction.azurewebsites.net/api/manager/users/",
 
 	GetJson = Web.Contents
 	(
 		url,
 		[
-			Query=[PBCode=PowerBISecret],
 			ManualStatusHandling={500},
-                        RelativePath = "/api/users/powerbi"
+                        RelativePath = PowerBISecret
 		]
                 
 	),
@@ -16,7 +15,8 @@ let
 	GetMetadata = Value.Metadata(GetJson),
 	GetResponseStatus = GetMetadata[Response.Status],
 	ResultText = if GetResponseStatus=500 then "[]" else Text.FromBinary(GetJson),
-	token = Text.Remove(ResultText,"""")
+	user = Json.Document(GetJson),
+	token = user[AccessToken][access_token]
 in  
 	token
 in

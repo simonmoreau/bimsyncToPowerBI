@@ -3,7 +3,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 	//A single call to the bimsync API
 	GetPage = (Index) =>
 	let
-		url = "https://api.bimsync.com",
+		url = "https://api.bimsync.com/v2/",
 
 		GetJson = Web.Contents
 		(
@@ -35,7 +35,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 	//Get the page number for a given ressource
 	GetItemCount = () as number =>
 	let
-		url = "https://bimsyncmanagerapi.azurewebsites.net",
+		url = "https://binsyncfunction.azurewebsites.net/api/manager/users/",
 
 		GetJson = Web.Contents
 		(
@@ -44,15 +44,13 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 				Query = 
 				[
 					ressource=relativePath,
-					revision=revisionId,
-                    PBCode=PowerBISecret
+					revision=revisionId
 				],
-				RelativePath = "/api/users/pages"
+				RelativePath = PowerBISecret & "/pages"
 			]
 		),
-
-		text = Text.FromBinary(GetJson),
-		Source = Number.FromText(Text.Remove(text,""""))
+		PageNumber = Json.Document(GetJson),
+		Source = PageNumber[PageNumber]
 	in  
 		Source,
 

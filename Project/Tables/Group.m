@@ -11,7 +11,7 @@ FilterRevision = (revision as record,revisions as list ) as logical =>
 let
     revisionInModel = List.Select(revisions , each _[modelId] = revision[modelId]),
 	revisionInModelSorted = List.Sort(revisionInModel, (x, y) => Value.Compare(y[createdAt], x[createdAt])),
-	result = if List.Contains(List.FirstN(revisionInModelSorted,2), revision)
+	result = if List.Contains(List.FirstN(revisionInModelSorted,NumberOfRevisions), revision)
 	then
 		true
 	else
@@ -39,7 +39,7 @@ in
 //The request to retrieve a page of groups
 token = GetToken(),
 revisionsList = LastRevisions(AllRevisions(projectId ,token )),
-Entities    = List.Combine(List.Transform(revisionsList, each RESTFunction("/v2/projects/" & projectId & "/ifc/groups", _[id],token))),
+Entities    = List.Combine(List.Transform(revisionsList, each RESTFunction("projects/" & projectId & "/ifc/groups", _[id],token))),
 Table       = Table.FromList(Entities, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
 Fields      = Record.FieldNames(Entities{0}),
 FinalTable  = AddFields(Table,Fields),
