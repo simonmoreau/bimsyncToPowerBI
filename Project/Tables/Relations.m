@@ -25,7 +25,7 @@ in
 let
     filteredRevisions = List.Select(revisions , each FilterRevision(_,revisions )) as list 
 in
-    filteredRevisions ,
+    filteredRevisions,
 
 //Get all the revisions
 AllRevisions = (projectId as text, token as text) => 
@@ -56,6 +56,14 @@ ExpandedParent = Table.ExpandRecordColumn(FinalTable, "parent", {"url", "objectI
 ExtractedValues = Table.TransformColumns(ExpandedParent, {"zones", each if List.Count(_) <> 0 then _{0} else null}),
 Expandedzones = Table.ExpandRecordColumn(ExtractedValues, "zones", {"url", "objectId", "name", "ifcType"}, {"zones.url", "zones.objectId", "zones.name", "zones.ifcType"}),
 ExtractedGroupsValues = Table.TransformColumns(Expandedzones, {"groups", each if List.Count(_) <> 0 then _{0} else null}),
-ExpandedGroups = Table.ExpandRecordColumn(ExtractedGroupsValues, "groups", {"url", "objectId", "name", "ifcType"}, {"groups.url", "groups.objectId", "groups.name", "groups.ifcType"})
+ExpandedGroups = Table.ExpandRecordColumn(ExtractedGroupsValues, "groups", {"url", "objectId", "name", "ifcType"}, {"groups.url", "groups.objectId", "groups.name", "groups.ifcType"}),
+ExpandedTypes = Table.ExpandRecordColumn(ExpandedGroups, "type", {"url", "objectId", "globalId", "name", "ifcType"}, {"type.url", "type.objectId","type.globalId", "type.name", "type.ifcType"}),
+ExtractedChildrenValues = Table.TransformColumns(ExpandedTypes, {"children", each if List.Count(_) <> 0 then _{0} else null}),
+ExtractedChildren = Table.ExpandRecordColumn(ExtractedChildrenValues, "children", {"url", "objectId", "name", "ifcType"}, {"children.url", "children.objectId", "children.name", "children.ifcType"}),
+ExtractedSystemsValues = Table.TransformColumns(ExtractedChildren, {"systems", each if List.Count(_) <> 0 then _{0} else null}),
+ExtractedSystems = Table.ExpandRecordColumn(ExtractedSystemsValues, "systems", {"url", "objectId", "name", "ifcType"}, {"systems.url", "systems.objectId", "systems.name", "systems.ifcType"}),
+ExpandedOwnerHistory = Table.ExpandRecordColumn(ExtractedSystems, "ownerHistory", {"url", "objectId", "globalId", "name", "ifcType"}, {"ownerHistory.url", "ownerHistory.objectId", "ownerHistory.globalId", "ownerHistory.name", "ownerHistory.ifcType"}),
+ExtractedLayersValues = Table.TransformColumns(ExpandedOwnerHistory, {"layers", each if List.Count(_) <> 0 then _{0} else null}),
+ExtractedLayers = Table.ExpandRecordColumn(ExtractedLayersValues, "layers", {"url", "objectId", "globalId", "name", "ifcType"}, {"layers.url", "layers.objectId", "layers.globalId", "layers.name", "layers.ifcType"})
 in
-ExpandedGroups
+ExtractedLayers
