@@ -8,6 +8,7 @@ let
     in
 	    bcfCommentsWithBoardId,
 
+    BCFToken = GetBCFToken(),
     topicsList = BCFTopicsList(BCFToken),
     commentsList = List.Combine(List.Transform(topicsList,  each GetComments(_[project_id],_[guid],BCFToken))),
 

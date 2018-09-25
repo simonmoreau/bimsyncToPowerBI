@@ -1,5 +1,5 @@
 let
-Source = (relativePath as text, token as text) => let
+Source = (relativePath as text, bcfToken as text) => let
 	
 		url = "https://bcf.bimsync.com",
 
@@ -9,7 +9,7 @@ Source = (relativePath as text, token as text) => let
 			[
 				Headers = 
 				[
-					#"Authorization"="Bearer " & token,
+					#"Authorization"="Bearer " & bcfToken,
 					#"Content-Type"="application/json"
 				],
 				RelativePath = relativePath,

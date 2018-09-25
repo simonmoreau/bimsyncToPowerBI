@@ -14,7 +14,8 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 				],
 				Query = 
 				[
-					revision = revisionId
+					revision = revisionId,
+					pageSize=Number.ToText(1000)
 				],
 				RelativePath = relativePath,
 				ManualStatusHandling={500}
