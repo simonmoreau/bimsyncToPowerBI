@@ -3,7 +3,8 @@ let
 //Get a list of GetElementSummary for a given revisionId and projectId
 GetElementSummary = (projectId as text, revisionId as text,token as text) as record =>
 let 
-	elementSummaries = RESTFunctionWithoutPage("/v2/projects/" & projectId & "/ifc/products/ifctypes",revisionId,token),
+	response = RESTFunctionWithoutPage("/v2/projects/" & projectId & "/ifc/products/ifctypes",revisionId,token),
+	elementSummaries = if Value.Is(response,type list) then [IfcProject = 0] else response,
 	elementSummariesWithProjectId = Record.AddField(elementSummaries,"projectId",projectId),
 	elementSummariesWithRevisionId = Record.AddField(elementSummariesWithProjectId,"revisionId",revisionId)
 in
