@@ -3,7 +3,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 	//A single call to the bimsync API
 	GetPage = (Index) =>
 	let
-		url = "https://api.bimsync.com/v2/",
+		url = "https://api.bimsync.com",
 
 		GetJson = Web.Contents
 		(
@@ -14,7 +14,7 @@ Source = (relativePath as text, revisionId as text, token as text) => let
 					#"Authorization"="Bearer " & token,
 					#"Content-Type"="application/json"
 				],
-				RelativePath = relativePath,
+				RelativePath = "/v2/" & relativePath,
 				Query = 
 				[
 					revision = revisionId,
