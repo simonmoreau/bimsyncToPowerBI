@@ -251,7 +251,7 @@ in
 Source = elements, 
 //Create the table
 initialTable = Table.FromList(Source, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-idTable = Table.AddColumn(initialTable, "objectId", each [Column1][objectId]),
+idTable = Table.AddColumn(initialTable, "objectId", each [Column1][objectId], type nullable number),
 typeTable = Table.AddColumn(idTable, "ifcType", each [Column1][ifcType]),
 revisionTable = Table.AddColumn(typeTable , "revisionId", each [Column1][revisionId]),
 

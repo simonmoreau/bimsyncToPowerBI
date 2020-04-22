@@ -64,6 +64,7 @@ ExtractedSystemsValues = Table.TransformColumns(ExtractedChildren, {"systems", e
 ExtractedSystems = Table.ExpandRecordColumn(ExtractedSystemsValues, "systems", {"url", "objectId", "name", "ifcType"}, {"systems.url", "systems.objectId", "systems.name", "systems.ifcType"}),
 ExpandedOwnerHistory = Table.ExpandRecordColumn(ExtractedSystems, "ownerHistory", {"url", "objectId", "globalId", "name", "ifcType"}, {"ownerHistory.url", "ownerHistory.objectId", "ownerHistory.globalId", "ownerHistory.name", "ownerHistory.ifcType"}),
 ExtractedLayersValues = Table.TransformColumns(ExpandedOwnerHistory, {"layers", each if List.Count(_) <> 0 then _{0} else null}),
-ExtractedLayers = Table.ExpandRecordColumn(ExtractedLayersValues, "layers", {"url", "objectId", "globalId", "name", "ifcType"}, {"layers.url", "layers.objectId", "layers.globalId", "layers.name", "layers.ifcType"})
+ExtractedLayers = Table.ExpandRecordColumn(ExtractedLayersValues, "layers", {"url", "objectId", "globalId", "name", "ifcType"}, {"layers.url", "layers.objectId", "layers.globalId", "layers.name", "layers.ifcType"}),
+EditTypes = Table.TransformColumnTypes(ExtractedLayers,{{"objectId", Int64.Type},{"parent.objectId", Int64.Type},{"zones.objectId", Int64.Type},{"groups.objectId", Int64.Type},{"type.objectId", Int64.Type},{"children.objectId", Int64.Type},{"systems.objectId", Int64.Type},{"ownerHistory.objectId", Int64.Type},{"layers.objectId", Int64.Type}})
 in
-ExtractedLayers
+EditTypes

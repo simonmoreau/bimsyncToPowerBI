@@ -41,11 +41,11 @@ token = GetToken(),
 revisionsList = LastRevisions(AllRevisions(projectId ,token )),
 Entities    = List.Combine(List.Transform(revisionsList, each RESTFunction("projects/" & projectId & "/ifc/groups", _[id],token))),
 Table       = Table.FromList(Entities, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
-Fields      = Record.FieldNames(Entities{0}),
-FinalTable  = AddFields(Table,Fields),
-ExpandedTable = Table.ExpandRecordColumn(FinalTable, "attributes", {"GlobalId", "Name", "Description"}, {"attributes.GlobalId", "attributes.Name", "attributes.Description"}),
-    #"Expanded attributes.GlobalId" = Table.ExpandRecordColumn(ExpandedTable, "attributes.GlobalId", {"value"}, {"attributes.GlobalId.value"}),
-    #"Expanded attributes.Name" = Table.ExpandRecordColumn(#"Expanded attributes.GlobalId", "attributes.Name", {"value"}, {"attributes.Name.value"}),
-    #"Expanded attributes.Description" = Table.ExpandRecordColumn(#"Expanded attributes.Name", "attributes.Description", {"value"}, {"attributes.Description.value"})
+Fields      = if List.Count(Entities) = 0 then null else Record.FieldNames(Entities{0}),
+FinalTable  = if Fields = null then Table else AddFields(Table,Fields),
+ExpandedTable = if Fields = null then Table else Table.ExpandRecordColumn(FinalTable, "attributes", {"GlobalId", "Name", "Description"}, {"attributes.GlobalId", "attributes.Name", "attributes.Description"}),
+    #"Expanded attributes.GlobalId" = if Fields = null then Table else  Table.ExpandRecordColumn(ExpandedTable, "attributes.GlobalId", {"value"}, {"attributes.GlobalId.value"}),
+    #"Expanded attributes.Name" = if Fields = null then Table else Table.ExpandRecordColumn(#"Expanded attributes.GlobalId", "attributes.Name", {"value"}, {"attributes.Name.value"}),
+    #"Expanded attributes.Description" = if Fields = null then Table else Table.ExpandRecordColumn(#"Expanded attributes.Name", "attributes.Description", {"value"}, {"attributes.Description.value"})
 in
 #"Expanded attributes.Description"
