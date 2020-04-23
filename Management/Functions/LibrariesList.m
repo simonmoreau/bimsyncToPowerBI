@@ -5,7 +5,9 @@ let
     GetLibraries = (projectId as text) as list =>
     let 
         libraries = RESTWPages("/v2/projects/" & projectId & "/libraries",token),
-        librariesWithProjectId = List.Transform(libraries, each Record.AddField(_,"projectId",projectId))
+        // Filter only document library
+        documentLibraries = List.Select(libraries, each Record.Field(_,"type") = "document"),
+        librariesWithProjectId = List.Transform(documentLibraries, each Record.AddField(_,"projectId",projectId))
     in
         librariesWithProjectId,
 
